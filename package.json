@@ -1,0 +1,19 @@
+{
+  "name": "node-ruuvitag-weather",
+  "version": "1.0.0",
+  "description": "Weather station based on RuuviTags",
+  "main": "server.js",
+  "scripts": {
+    "run": "node server.js"
+  },
+  "author": "Kimmo Kyyhkynen",
+  "license": "MIT",
+  "dependencies": {
+    "base91": "0.0.5",
+    "eddystone-beacon-scanner": "^3.0.0",
+    "express": "^4.15.0",
+    "moment": "^2.17.1",
+    "pug": "^2.0.0-beta11",
+    "winston": "^2.3.1"
+  }
+}

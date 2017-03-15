@@ -1,0 +1,88 @@
+* { margin: 0; padding: 0; }
+body {
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  background-color: #333;
+}
+
+/* tabs */
+.tab {
+  margin-top: 1vh;
+}
+.tab:target {
+  display: block;
+}
+.tab:not(:target) {
+  display: none;
+}
+#onlyone.tab {
+  display: block !important;
+}
+#tabs {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: table;
+}
+#tabs a {
+  display: table-cell;
+  text-align: center;
+  text-decoration: none;
+  color: #666;
+  padding: 2vh 0;
+  border-top: 1px solid #666;
+}
+#tabs a:not(:last-child) {
+  border-right: 1px solid #666;
+}
+#tabs a.active {
+  border-top: none;
+  color: #ccc;
+}
+
+/* content */
+h2 {
+  font-weight: 300;
+  font-size: 1.5vh;
+  text-align: center;
+  color: #666;
+}
+h3 {
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #666;
+  font-size: 3vh;
+  font-weight: 300;
+}
+.chart {
+  width: 100vw;
+  height: 20vh;
+  font-size: 10px
+}
+.value,
+.unit {
+  font-family: 'Open Sans Condensed';
+  vertical-align: top;
+}
+.value {
+  font-size: 1em;
+  color: #eee;
+}
+.unit {
+  font-size: .5em;
+  line-height: 2;
+  color: #999;
+}
+.temperature {
+  width: 100%;
+  text-align: center;
+  font-size: 20vh;
+  margin-bottom: 2vh;
+}
+
+.humidity,
+.pressure {
+  width: 50%;
+  float: left;
+  font-size: 8vh;
+  text-align: center;
+}

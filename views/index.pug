@@ -1,0 +1,45 @@
+html
+  head
+    title Weather
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300', rel='stylesheet') 
+    link(href='/css/weather.css', rel='stylesheet')
+    script(src='https://www.gstatic.com/charts/loader.js')
+  body
+    each data, id in ruuviTags
+      div.tab(id=(noTags > 1 ? 'tag-'+id : 'onlyone')) 
+        h2 last updated #{moment(data.lastUpdated).fromNow()}
+        section.temperature
+          div 
+            span.value #{data.temperature}
+            span.unit &deg;C
+          .chart(id='chart-'+id)
+        section.humidity
+          h3 Humidity
+          div
+            span.value #{data.humidity}
+            span.unit %
+        section.pressure
+          h3 Air pressure
+          div
+            span.value  #{data.pressure}
+            span.unit hPa
+      - var historyArray = ''
+      each h in data.history
+        - historyArray += ',[new Date('+h[0]+'),'+h[1]+']'
+      script.
+        google.charts.setOnLoadCallback(function() {
+          var containerId = 'chart-#{id}',
+              chartData = [['Time', 'Temperature']#{historyArray}];
+          drawChart(containerId, chartData);
+          // google charts isn't responsive, needs to be redrawn to scale
+          window.addEventListener('resize', debounce(function() {
+            drawChart(containerId, chartData);
+          }, 100));
+        });
+    if noTags > 1
+      #tabs
+        each data, id in ruuviTags
+          a(href='#tag-'+id) #{id}
+    script(src='/js/weather.js')
+
+
